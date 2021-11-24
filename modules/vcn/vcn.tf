@@ -8,6 +8,19 @@ resource "oci_core_vcn" "vcn_fra" {
 }
 */
 
+terraform {
+  required_providers {
+    oci = {
+      source = "hashicorp/oci"
+      version = ">= 1.0.2"
+      configuration_aliases = [
+        oci.root,
+        oci.region1
+      ]
+    }
+  }
+}
+
 resource "oci_core_vcn" "vcn" {
   #Required
   //provider        = var.oci

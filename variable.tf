@@ -6,6 +6,6 @@ variable "compartment_name" {
   default = "Julio_Vasquez"
 }
 
-variable "region2" {
+variable "region1" {
   default = "eu-amsterdam-1"
 }

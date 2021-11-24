@@ -8,8 +8,8 @@ provider "oci" {
 }
 
 provider "oci" {
-  alias             = "region2"
-  region            = var.region2
+  alias             = "region1"
+  region            = var.region1
   tenancy_ocid      = local.json_data.TERRAFORM_work.tenancy_ocid
   user_ocid         = local.json_data.TERRAFORM_work.user_ocid
   private_key_path  = local.json_data.TERRAFORM_work.private_key_path
@@ -26,20 +26,20 @@ provider "oci" {
 data "oci_core_vcn" "test_vcn_fra" {
   #Required
   provider = oci.home
-  vcn_id = "ocid1.vcn.oc1.xxxxxxxxXXXXXxxxXXXXX"
+  vcn_id = "ocid1.xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx"
 }
 
 data "oci_core_vcn" "test_vcn_ams" {
   #Required
   provider = oci.region2
-  vcn_id = "ocid1.vcn.oc1.xxxxxxxxXXXXXxxxXXXXX"
+  vcn_id = "ocid1.vcn.xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx"
 }
 */
 
 module "compartment" {
   source            = "./modules/identity"
-  compartment_name  = "julio_2"
-  compartment       = local.json_data.Compartment.julio_vasquez
+  compartment_name  = local.json_data.COMPARTMENT.name
+  compartment       = local.json_data.COMPARTMENT.julio_vasquez
 }
 
 module "vcn" {
@@ -49,7 +49,8 @@ module "vcn" {
   providers = {
     //oci = "oci.region2"
     //"oci" : oci.region2
-    oci = oci.region2
+    oci.root = oci.home
+    oci.region1 = oci.region1
   }
   number_resources  = local.json_data.VCN.vcn_number
 

@@ -1,17 +1,17 @@
 {
   "TERRAFORM_work": {
-    "tenancy_ocid": "ocid1.xxxxxxxxxxxxxxxx",
-    "user_ocid": "ocid1.user.xxxxxxxxxx",
-    "private_key_path": "/Users/julio/.oci/xxxxxx.pem",
-    "fingerprint": "a8:8e:a3:7b:xx:xx:xx:xx:Xx:xx:XX:xx",
+    "tenancy_ocid": "ocid1.xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx",
+    "user_ocid": "ocid1.user.xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx",
+    "private_key_path": "/Users/julio/.oci/xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx.pem",
+    "fingerprint": "a8:xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx",
     "region": "eu-frankfurt-1"
   },
 
   "TERRAFORM_personal": {
-    "tenancy_ocid": "ocid1.xxxxxxxxxxxxxxxxxxxxx",
-    "user_ocid": "ocid1.user.oc1.xxxxxxxxxxxxxxxxxxxxx",
-    "private_key_path": "/Users/julio/.oci/xxxxxxxxxxx.pem",
-    "fingerprint": "a8:8e:a3:7b:xx:xx:xx:xx:Xx:xx:XX:xx",
+    "tenancy_ocid": "ocid1.xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx",
+    "user_ocid": "ocid1.user.oc1..aaxxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx",
+    "private_key_path": "/Users/julio/.oci/xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx.pem",
+    "fingerprint": "a8:8e:xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx",
     "region": "uk-london-1"
   },
 
@@ -28,9 +28,10 @@
     "label" : "none"
   },
 
-  "Compartment": {
-    "root_compartment": "ocid1.tenancy.xxxxxxxxXXXXXxxxXXXXX",
-    "julio_vasquez": "ocid1.compartment.oc1.xxxxxxxxXXXXXxxxXXXXX"
+  "COMPARTMENT": {
+    "name": "julio_comp_multi_2",
+    "root_compartment": "ocid1.tenancy.oc1xxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxxkpaa",
+    "julio_vasquez": "ocid1.compartment.ocxxxxxxxxXXXXXXxxxxxXXXXXXxxxxxxx6l3oq"
   }
 
 }
