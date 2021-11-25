@@ -13,10 +13,7 @@ terraform {
     oci = {
       source = "hashicorp/oci"
       version = ">= 1.0.2"
-      configuration_aliases = [
-        oci.root,
-        oci.region1
-      ]
+      configuration_aliases = [ oci.src, oci.dst ]
     }
   }
 }

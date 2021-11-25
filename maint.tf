@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    oci = {
+      source  = "hashicorp/oci"
+      version = ">= 1.0.0"
+    }
+  }
+}
+
+
 provider "oci" {
   alias             = "home"
   tenancy_ocid      = local.json_data.TERRAFORM_work.tenancy_ocid
@@ -42,15 +53,11 @@ module "compartment" {
   compartment       = local.json_data.COMPARTMENT.julio_vasquez
 }
 
-module "vcn" {
+module "vcn_home" {
   source            = "./modules/vcn"
-  //prov              = oci.home
-  //tmp_provider      = oci.region2
   providers = {
-    //oci = "oci.region2"
-    //"oci" : oci.region2
-    oci.root = oci.home
-    oci.region1 = oci.region1
+    oci.src   = oci.home
+    oci.dst   = oci.region1
   }
   number_resources  = local.json_data.VCN.vcn_number
 
@@ -63,6 +70,27 @@ module "vcn" {
   nat_gateway_enabled = local.json_data.VCN.vcn_nat
 
 }
+
+
+
+module "vcn_region_1" {
+  source            = "./modules/vcn"
+  providers = {
+    oci.src   = oci.region1
+    oci.dst   = oci.home
+  }
+  number_resources  = local.json_data.VCN.vcn_number
+
+  compartment_id    = module.compartment.compartment_id
+  compartment_name  = module.compartment.compartment_name
+  vcn_cidr          = local.json_data.VCN.vcn_cidrblock
+  resource_name     = local.json_data.VCN.vcn_name
+  label_prefix      = local.json_data.ENV.label
+  internet_gateway_enabled = local.json_data.VCN.vcn_ig
+  nat_gateway_enabled = local.json_data.VCN.vcn_nat
+
+}
+
 
 /*
 module "vcn" {
